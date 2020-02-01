@@ -1,0 +1,9 @@
+commande de creation du projet 
+la version utilisé de laravel est 5.7 .
+la version de PHP 7.3.9 .
+la base de donné est Mysql . 
+le systeme d'authentification adopté JWT paquage tymon/jwt-auth
+composer create-project laravel/laravel=5.7 devinweb --prefer-dist 
+
+
+
