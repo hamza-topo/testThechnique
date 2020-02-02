@@ -12,6 +12,17 @@ use DB;
 
 class DeliveryTimeController extends Controller
 {
+    
+    /**
+     * Create a new DeliveryTimeController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['client.deliveryTime']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +38,17 @@ class DeliveryTimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function deliveryTime(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'deliveryTime_at' => 'required',
+            'body' => 'required',
+        ]);
+
+        $deliveryTime=DeliveryTime::create($request->only('deliveryTime_at'));
+        return response()->json([
+        "deliveryTime" =>$deliveryTime
+    ], 200);
     }
 
     /**

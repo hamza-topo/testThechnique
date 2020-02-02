@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "a06dfbd9-9067-439e-9431-d6fd51f6380e",
+		"name": "devinweb Test Technique",
+		"description": "this Collection is just for testing all the requests api  in project ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDY0MjA1MCwiZXhwIjoxNTgwNjQ1NjUwLCJuYmYiOjE1ODA2NDIwNTAsImp0aSI6InVWVTBNNTV6OWh0OXhqM3giLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.nhwXFRhIDRrnTFRMFAYtZXyvTQdczCZwn6PTvCxHaf0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"delivery_time\" :\n\t{\n\t\t\"0\":\"17->20\",\n\t\t\"1\":\"12->151\"\n\t\t\n\t\t\n\t}\n\t\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities/4/delivery-times",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities",
+						"4",
+						"delivery-times"
+					]
+				},
+				"description": "l'api d'authentification ca marche "
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/partners/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1MjQ0MywiZXhwIjoxNTgwNTU2MDQzLCJuYmYiOjE1ODA1NTI0NDMsImp0aSI6IjBUZm5jZ0g2c1hMam5uS0giLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.u6PVlXEpPEfvTN6lHZkKvsTwOZNktXGpbTwIQ9r__Gk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "partner_name",
+							"value": "Soufiane",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/partners/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"partners",
+						"create"
+					]
+				},
+				"description": "Request de creation d'un partenaire "
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/partners/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1MjQ0MywiZXhwIjoxNTgwNTU2MDQzLCJuYmYiOjE1ODA1NTI0NDMsImp0aSI6IjBUZm5jZ0g2c1hMam5uS0giLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.u6PVlXEpPEfvTN6lHZkKvsTwOZNktXGpbTwIQ9r__Gk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "partner_nam",
+							"value": "Ismail",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/partners/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"partners",
+						""
+					]
+				},
+				"description": "la Request d'affichage de liste des fournisseurs"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/partners/delete/5",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1MjQ0MywiZXhwIjoxNTgwNTU2MDQzLCJuYmYiOjE1ODA1NTI0NDMsImp0aSI6IjBUZm5jZ0g2c1hMam5uS0giLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.u6PVlXEpPEfvTN6lHZkKvsTwOZNktXGpbTwIQ9r__Gk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "partner_nam",
+							"value": "Ismail",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/partners/delete/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"partners",
+						"delete",
+						"5"
+					]
+				},
+				"description": "la Request de suppression d'un fournisseur ."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/cities",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1Njg5NywiZXhwIjoxNTgwNTYwNDk3LCJuYmYiOjE1ODA1NTY4OTcsImp0aSI6ImJlVHFlWlVCMm12MDJaRzQiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.3T3NiiQBtYZGylAw8TL-M_o9UoTBpKZn9BGBou-8qmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities"
+					]
+				},
+				"description": "la Request d'affichage des villes avec les fournisseurs associés"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/cities/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1Njg5NywiZXhwIjoxNTgwNTYwNDk3LCJuYmYiOjE1ODA1NTY4OTcsImp0aSI6ImJlVHFlWlVCMm12MDJaRzQiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.3T3NiiQBtYZGylAw8TL-M_o9UoTBpKZn9BGBou-8qmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "citiy_name",
+							"value": "Marrakech",
+							"type": "text"
+						},
+						{
+							"key": "partner_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities",
+						"create"
+					]
+				},
+				"description": "la Request de creation d'une ville"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/cities/delete/4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU1Njg5NywiZXhwIjoxNTgwNTYwNDk3LCJuYmYiOjE1ODA1NTY4OTcsImp0aSI6ImJlVHFlWlVCMm12MDJaRzQiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.3T3NiiQBtYZGylAw8TL-M_o9UoTBpKZn9BGBou-8qmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities/delete/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities",
+						"delete",
+						"5"
+					]
+				},
+				"description": "la Request de suppression d'une ville"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/deliverytime/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDU2NzAwOSwiZXhwIjoxNTgwNTcwNjA5LCJuYmYiOjE1ODA1NjcwMDksImp0aSI6Ikp5WE9lUjF5YUFVUWgxa00iLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.N4xbPhkEI5LtvSIsqrIZ3PK8LsRZ446bhnUNu1Ika_8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "delivery_at",
+							"value": "14->18",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deliverytime/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deliverytime",
+						"create"
+					]
+				},
+				"description": "la Request de creation d'une deliverytime"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDY2NTgwNiwiZXhwIjoxNTgwNjY5NDA2LCJuYmYiOjE1ODA2NjU4MDYsImp0aSI6IkVRbDJKazYydlJ5MlJWbngiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.qyKy9io3Wc1Ir0UF3dS2qwyItJ-cl4TU4xF6ZYAOVNs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   {\n   \t\"deliveryTime_at\":{\n   \t\t\"delivery_at\" :\n\t{\n\t\t\"0\":\"17->20\",\n\t\t\"1\":\"12->15\"\n\t\t\n\t\t\n\t}\n   \t}\n   }\n   \n\t\n\t\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities/1/exclude-day",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities",
+						"1",
+						"exclude-day"
+					]
+				},
+				"description": "point de terminaison qui exclut un délai de livraison à une certaine date pour une ville donnée."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/cities/{city_id}/delivery-dates-times/{number_of_days}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU4MDY3MzI2MSwiZXhwIjoxNTgwNjc2ODYxLCJuYmYiOjE1ODA2NzMyNjEsImp0aSI6ImZXRUV1U3Q3dWRWVkVoV3AiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.79KLACkYwJUyBeDNdvkd-WnF9hrT2zRFtunVG2vUcZ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cities/1/delivery-dates-times/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cities",
+						"1",
+						"delivery-dates-times",
+						"5"
+					]
+				},
+				"description": "cette Request doit nous renvoyer les délais de livraison disponibles dans cette ville chaque jour, à partir du jour en cours\r\net va,avec valeur on ou off de chaque jour ."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
