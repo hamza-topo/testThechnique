@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeliveryTimesTable extends Migration
+class CreateHolidaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_times', function (Blueprint $table) {
+        Schema::create('holidays', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('status')->default(1)->comment="1:actif , 0:inactif";
-            $table->string('delivery_at',100);
+            $table->dateTime('day_off');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_times');
+        Schema::dropIfExists('holidays');
     }
 }

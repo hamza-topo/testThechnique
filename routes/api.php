@@ -27,5 +27,9 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 	Route::get('cities/','Api\CityController@index')->name('partners');
 	Route::delete('cities/delete/{id}','Api\CityController@destroy');
 	Route::post('cities/modify/{id}','Api\CityController@update')->name('partner.update');
-
+	//les routes associé au Delivery time
+	//Route::post('delivery-times/create','Api\DeliveryTimeController@store');
+	Route::post('cities/{city_id}/delivery-times ','Api\DeliveryTimeController@store');
+    //cette route et pour exclurer les jours-off d'une ville donné
+    Route::get('cities/{city_id}/exclude-day','Api\DeliveryTimeController@excludeDay');
 });

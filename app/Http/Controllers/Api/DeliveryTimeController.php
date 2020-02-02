@@ -5,19 +5,13 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Partner;
-class PartnerController extends Controller
+use Carbon\Carbon;
+use App\DeliveryTime;
+use App\Holiday;
+use DB;
+
+class DeliveryTimeController extends Controller
 {
-     /**
-     * Create a new PartnerController instance.
-     *
-     * @return void
-     */
-     public function __construct()
-     {   
-        //prendre par consideration l'affichage de la liste des partenaires si la partie client existe ,l'exception de la route partners
-        $this->middleware('auth:api', ['except' => ['partners']]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -25,11 +19,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::where('status',1)->get();
-
-        return response()->json([
-            "partners" => $partners
-        ], 200);
+        //
     }
 
     /**
@@ -48,31 +38,41 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$city_id)
     {
-       //valider le champ partner name avant la creation
+        //valider le champ partner name avant la creation
        //validate the partner name field before creation
         $validator = Validator::make($request->all(), [
-            'partner_name' => 'required|max:100',
+            'deliveryTime_at[]' => 'required',
             'body' => 'required',
         ]);
-
-        $partner = Partner::create($request->only(["partner_name"]));
-
+       //we create a new delivery time then we associated to a city id 
+        foreach ($request->deliveryTime_at as $deliveryTime_at) {
+           $deliveryTime = DB::table('delivery_times')
+           ->insert(
+            ['city_id' => $city_id,
+             'delivery_at' =>$deliveryTime_at->delivery_at
+           ]);
+        }
+        
         return response()->json([
-            "partner" => $partner
+            "message" =>"association reussie"
         ], 200);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Day off.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function excludeDay(Request $request,$city_id)
     {
-        //
+       $holidays=Holiday::where('city_id',$city_id)->get();
+       foreach ($holidays as $holiday) {
+           $holiday->day_off=Carbon::parse($holiday->day_off)->format('M d Y');
+       }
+        return response()->json([
+            "holidays" =>$holidays
+        ], 200);
     }
 
     /**
@@ -95,15 +95,7 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'partner_name' => 'required|max:100',
-            'body' => 'required',
-        ]);
-
-        $partner= Partner::find($id)->update($request->only('partner_name'));
-        return response()->json([
-            "partner" => $partner
-        ], 200);
+        //
     }
 
     /**
@@ -114,8 +106,6 @@ class PartnerController extends Controller
      */
     public function destroy($id)
     {
-         //soft delete modifier seulement le status
-        Partner::findOrfail($id)->update('status',0);
-        return response()->json(['status' => true, 'message' => 'Category Deleted']);
+        //
     }
 }
