@@ -116,7 +116,7 @@ class CityController extends Controller
     public function destroy($id)
     {
        //soft delete modifier seulement le status
-        $city=City::findOrfail($id)->update('status',0);
+        City::findOrfail($id)->update('status',0);
         return response()->json(['status' => true, 'message' => 'Category Deleted']);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeliveryTimesTable extends Migration
+class AddStatusToPartners extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_times', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('partners', function (Blueprint $table) {
             $table->tinyInteger('status')->default(1)->comment="1:actif , 0:inactif";
-            $table->string('delivery_at',100);
         });
     }
 
@@ -27,6 +25,6 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_times');
+         Schema::disableForeignKeyConstraints();
     }
 }

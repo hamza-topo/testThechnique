@@ -14,4 +14,8 @@ class City extends Model
     {
         return $this->BelongsTo('App\Partner');
     }
+    public function deleveryTimes()
+    {
+        return $this->HasMany('App\DeliveryTime');
+    }
 }

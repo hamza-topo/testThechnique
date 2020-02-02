@@ -25,7 +25,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::latest()->get();
+        $partners = Partner::where('status',1)->get();
 
         return response()->json([
             "partners" => $partners
@@ -114,8 +114,8 @@ class PartnerController extends Controller
      */
     public function destroy($id)
     {
-        //soft delete remember to modify the logic
-        Partner::where('id', $id)->delete();
-        return response()->json([], 202);
+         //soft delete modifier seulement le status
+        Partner::findOrfail($id)->update('status',0);
+        return response()->json(['status' => true, 'message' => 'Category Deleted']);
     }
 }
