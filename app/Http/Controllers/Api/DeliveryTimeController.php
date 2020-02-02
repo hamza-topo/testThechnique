@@ -51,14 +51,14 @@ class DeliveryTimeController extends Controller
            $deliveryTime = DB::table('delivery_times')
            ->insert(
             ['city_id' => $city_id,
-             'delivery_at' =>$deliveryTime_at->delivery_at
-           ]);
-        }
-        
-        return response()->json([
-            "message" =>"association reussie"
-        ], 200);
-    }
+            'delivery_at' =>$deliveryTime_at->delivery_at
+        ]);
+       }
+
+       return response()->json([
+        "message" =>"association reussie"
+    ], 200);
+   }
 
     /**
      * Display the specified Day off.
@@ -70,11 +70,56 @@ class DeliveryTimeController extends Controller
        foreach ($holidays as $holiday) {
            $holiday->day_off=Carbon::parse($holiday->day_off)->format('M d Y');
        }
-        return response()->json([
-            "holidays" =>$holidays
-        ], 200);
-    }
+       return response()->json([
+        "holidays" =>$holidays
+    ], 200);
+   }
+    /**
+     * Display les jours disponible d'une delivery time.
+     *
+     */
+    public function availableDeliveryTime($city_id,$number_of_days)
+    {  
+        $delivery_times=DeliveryTime::where('city_id',$city_id)->get();
+        $holidays=Holiday::where('city_id',$city_id)->get();
+        $aujourdhui=Carbon::now();
+        $data=[];
+       // echo "aujourdhui avec format".$aujourdhui->format('Y-m-d');
+        $i=0;
+        $j=0; 
+        foreach ($delivery_times as $d_time) {
+            if($j<$number_of_days)
+               $data['delivery_at'][$j]=$d_time->delivery_at;
+           $j++;
+       }
+       $data['jours'][0]=$aujourdhui->format('Y-m-d');
 
+       while ($i<$number_of_days) {
+
+         if($i==0)
+         {
+            $day_off=Holiday::where([['city_id','=',$city_id],['day_off','=',$data['jours'][0]]])->first();
+            if(!$day_off)
+                $data['onOrof'][0]='on';
+            else
+                $data['onOrof'][0]='of';
+        }
+
+        $data['jours'][$i]=$aujourdhui->addDay(1)->format('Y-m-d');
+        $day_off=Holiday::where([['city_id','=',$city_id],['day_off','=',$data['jours'][$i]]])->first();
+        if(!$day_off)
+            $data['onOrof'][$i]='on';
+        else
+            $data['onOrof'][$i]='of';
+        $i++;
+
+    } 
+
+    return response()->json([
+        "data" =>$data
+    ], 200);
+
+}
     /**
      * Show the form for editing the specified resource.
      *

@@ -32,4 +32,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 	Route::post('cities/{city_id}/delivery-times ','Api\DeliveryTimeController@store');
     //cette route et pour exclurer les jours-off d'une ville donné
     Route::get('cities/{city_id}/exclude-day','Api\DeliveryTimeController@excludeDay');
+    //{number_of_days}=1
+    //{number_of_days}=2 aujourd'hui et le lendemain etc
+    Route::get('cities/{city_id}/delivery-dates-times/{number_of_days}','Api\DeliveryTimeController@availableDeliveryTime');
 });
