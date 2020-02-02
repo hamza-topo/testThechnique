@@ -121,7 +121,7 @@ class DeliveryTimeController extends Controller
             if(!$day_off)
                 $data['onOrof'][0]='on';
             else
-                $data['onOrof'][0]='of';
+                $data['onOrof'][0]='off';
         }
 
         $data['jours'][$i]=$aujourdhui->addDay(1)->format('Y-m-d');
